@@ -26,7 +26,7 @@ export default function Pokemon() {
 
     const getAllPokemons = async () => {
         try {
-            const response = await axios.get("http://localhost:4500/api/v1/pokemon/getAllPokemons");
+            const response = await axios.get("https://apexplusbackend.onrender.com/api/v1/pokemon/getAllPokemons");
             setAllPokemons(response.data.pokemons);
             setFilteredPokemons(response.data.pokemons);
         } catch (error) {
@@ -47,7 +47,7 @@ export default function Pokemon() {
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://localhost:4500/api/v1/pokemon/createPokemon",
+                "https://apexplusbackend.onrender.com/api/v1/pokemon/createPokemon",
                 formData
             );
             console.log(response.data);
@@ -72,7 +72,7 @@ export default function Pokemon() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:4500/api/v1/pokemon/deletePokemonById/${id}`);
+            await axios.delete(`https://apexplusbackend.onrender.com/api/v1/pokemon/deletePokemonById/${id}`);
             alert("Pokemon deleted successfully!");
             getAllPokemons();
         } catch (error) {
@@ -83,7 +83,7 @@ export default function Pokemon() {
 
     const handleEditSubmit = async () => {
         try {
-            const response = await axios.patch(`http://localhost:4500/api/v1/pokemon/updatePokemonById/${editId}`, formData);
+            const response = await axios.patch(`https://apexplusbackend.onrender.com/api/v1/pokemon/updatePokemonById/${editId}`, formData);
             console.log(response.data);
             alert("Pokemon information updated successfully!");
             setShowEdit(false);
@@ -98,7 +98,7 @@ export default function Pokemon() {
         const getData = async () => {
             if (editId) {
                 const res = await axios.get(
-                    `http://localhost:4500/api/v1/pokemon/getPokemonById/${editId}`
+                    `https://apexplusbackend.onrender.com/api/v1/pokemon/getPokemonById/${editId}`
                 );
                 console.log(res.data.pokemon, "res");
                 setFormData(res.data.pokemon);
